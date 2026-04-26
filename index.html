@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semangat! ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --card-bg: rgba(255, 255, 255, 0.12); }
+        body, html {
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif;
+            background: #0b0b0b url('https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&w=1000&q=80') no-repeat center center fixed;
+            background-size: cover; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        body::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 0; }
+        .card {
+            position: relative; z-index: 1; background: var(--card-bg); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 25px; padding: 30px;
+            width: 85%; max-width: 380px; text-align: center; color: white; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .stiker { width: 110px; height: 110px; margin-bottom: 15px; }
+        h2 { font-size: 1.2rem; margin-bottom: 10px; letter-spacing: 1px; }
+        #textDisplay { font-size: 0.95rem; opacity: 0.95; line-height: 1.6; white-space: pre-line; text-align: left; margin: 20px 0; display: none; }
+        button { 
+            padding: 12px 35px; border-radius: 50px; border: none; cursor: pointer; 
+            font-weight: 600; background: #fff; color: #000; transition: 0.3s;
+        }
+        button:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <div id="musicContainer" style="display:none">
+        <iframe id="youtubeAudio" width="1" height="1" 
+            src="https://www.youtube.com/embed/05MOHlyIaXQ?enablejsapi=1" 
+            frameborder="0" allow="autoplay">
+        </iframe>
+    </div>
+
+    <div class="card">
+        <img id="imageDisplay" src="https://feeldreams.github.io/pandaputih.gif" class="stiker">
+        
+        <h2 id="titleDisplay">Malam Minggu, 26 💌</h2> 
+        
+        <p id="textDisplay">Hai kamu 🫶  
+Jangan lupa ya… kamu itu hebat 💫  
+
+Walaupun hari ini susah, pusing, atau males belajar  
+Percaya deh, semua usaha kamu bakal kebayar nanti 🥹✨  
+
+Istirahat boleh, nyerah jangan ❌  
+Pelan-pelan aja, aku yakin kamu bisa 💪  
+
+<b>SEMANGAT BELAJARNYA YA! 📚❤️</b></p>
+        
+        <button id="mainBtn" onclick="mulaiSemuanya()">Klik di sini ✨</button>
+    </div>
+
+    <script>
+        function mulaiSemuanya() {
+            // 1. Play Musik
+            const iframe = document.getElementById('youtubeAudio');
+            iframe.src += "&autoplay=1";
+            
+            // 2. Tampilkan Teks & Ganti Gambar
+            document.getElementById('textDisplay').style.display = "block";
+            document.getElementById('mainBtn').style.display = "none";
+            document.getElementById('imageDisplay').src = "https://feeldreams.github.io/pandabelajar.gif";
+            
+            // 3. Efek Bintang/Hati Jatuh
+            mulaiEfek();
+        }
+
+        function mulaiEfek() {
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.innerHTML = "✨";
+                heart.style.position = "fixed";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.top = "-5vh";
+                heart.style.color = "white";
+                heart.style.fontSize = "20px";
+                heart.style.transition = "transform 4s linear";
+                heart.style.zIndex = "0";
+                document.body.appendChild(heart);
+                
+                setTimeout(() => { heart.style.transform = "translateY(110vh)"; }, 100);
+                setTimeout(() => heart.remove(), 5000);
+            }, 400);
+        }
+    </script>
+</body>
+</html>
